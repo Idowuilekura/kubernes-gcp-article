@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: house-price-prediction-deployment
+  labels:
+    name: house-price-prediction
+spec:
+  selector:
+    matchLabels:
+      app : house-price-prediction-app
+  replicas: 3
+  template:
+    metadata:
+      name: house-price-prediction-pod
+      labels:
+        app : house-price-prediction-app
+    spec:
+      containers:
+        - name : house-price-prediction
+          image : gcr.io/osesid/house_price_prediction
+          ports: 
+              - containerPort: 8080
+              
+
+
